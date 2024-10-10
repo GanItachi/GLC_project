@@ -1,20 +1,297 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Liste des cours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css"
+      integrity="sha384-PJsj/BTMqILvmcej7ulplguok8ag4xFTPryRq8xevL7eBYSmpXKcbNVuy+P0RMgq"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/img/" />
+
+    <title>Cours</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: -100;
+        box-sizing: border-box;
+      }
+
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        height: 70px;
+        background-color: rgba(22, 186, 243, 1);
+        box-shadow: 10px 5px 6px gold;
+        /*position: absolute;*/
+      }
+      .navbar-brand {
+        font-size: 20px;
+        color: white;
+        font-family: "Lobster", cursive;
+      }
+
+      .navbar-brand:hover {
+        color: gold;
+      }
+
+      .nav-link {
+        margin-right: 10px;
+        margin-left: 10px;
+        color: black;
+        text-overflow: uppercase;
+        font-family: "Space Grotesk", sans-serif;
+        border-bottom: 1px solid transparent;
+        transition: padding-bottom 0.4s ease-in-out, border-color 0.3s ease;
+        color: white;
+      }
+
+      .nav-link:hover {
+        color: gold;
+      }
+      .logo {
+        width: 200px; /* Taille du logo (tu peux ajuster cette valeur selon le besoin) */
+        height: auto; /* Garde les proportions du logo */
+        margin-bottom: 20px; /* Espace entre le logo et le texte */
+      }
+
+      .main::before {
+        content: "";
+        /*position: absolute;*/
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+          16,
+          42,
+          51,
+          0.278
+        ); /* Couche semi-transparente par-dessus l'image */
+        z-index: 0; /* S'assure que l'overlay reste derrière le texte */
+      }
+
+      /* Permet l'affichage du sous-menu au passage du curseur */
+      .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0; /* Assure que le menu apparaisse juste en dessous du lien */
+      }
+
+      /* Styles généraux pour tous les éléments du menu déroulant */
+      .dropdown-menu {
+        background-color: rgba(1, 183, 244, 0.434); /* Couleur de fond bleue */
+        border-radius: 10px; /* Coins arrondis */
+        box-shadow: 0px 4px 8px rgba(237, 166, 2, 0.471); /* Ombre légère */
+        padding: 10px; /* Espace intérieur autour des éléments */
+      }
+
+      /* Styles pour les éléments individuels du sous-menu */
+      .dropdown-item {
+        color: white; /* Couleur du texte en blanc */
+        padding: 10px 20px; /* Espace autour du texte dans chaque option */
+        border-radius: 5px; /* Coins légèrement arrondis */
+        transition: background-color 0.3s ease; /* Effet de transition pour les changements de couleur */
+      }
+
+      /* Couleur de fond lors du survol des éléments du menu */
+      .dropdown-item:hover {
+        background-color: gold; /* Change la couleur de fond en jaune doré lors du survol */
+        color: black; /* Change la couleur du texte en noir au survol */
+      }
+
+      /* Style pour le lien principal "Contact" dans la barre de navigation */
+      .nav-link.dropdown-toggle {
+        background-color: #333; /* Couleur de fond gris foncé pour le lien "Contact" */
+        color: #fff; /* Couleur du texte en blanc */
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+
+      /* Au survol du lien principal "Contact" */
+      .nav-link.dropdown-toggle:hover {
+        background-color: #ffbf00; /* Change la couleur de fond en jaune doré */
+        color: black; /* Change la couleur du texte au survol */
+      }
+
+      h1 {
+        font-size: 3em; /* Taille encore plus grande pour le titre */
+        margin: 0; /* Supprime les marges par défaut autour du titre */
+      }
+
+      .text-container {
+        color: white; /* Couleur du texte, tu peux la changer selon l'image */
+        position: absolute; /* Le texte est placé par-dessus l'image */
+        z-index: 1; /* Assure que le texte est visible au-dessus de l'image */
+        font-size: 2em; /* Ajuste la taille de la police */
+        background-color: rgba(
+          1,
+          183,
+          244,
+          0.434
+        ); /* Optionnel : Ajouter un fond semi-transparent au texte pour une meilleure lisibilité */
+        padding: 20px; /* Ajouter un peu d'espace autour du texte */
+        border-radius: 10px; /* Rendre les coins du fond arrondis */
+      }
+
+      .ensea {
+        font-size: 30px;
+        color: white;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      /* Style pour le conteneur global */
+      .containerb {
+        background-color: rgba(46, 120, 177, 0.789);
+        padding-top: 80px;
+        display: flex;
+        flex-wrap: wrap;
+        /*justify-content: center;*/
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 20px;
+      }
+
+      /* Style pour chaque card */
+      .card {
+        border: 1px solid black;
+        border-radius: 8px;
+        box-shadow: 0 2px 3px gold;
+        margin: 15px;
+        width: 1450px; /* Largeur de chaque card */
+        overflow: hidden;
+        transition: transform 0.2s;
+        flex: 1 1 30%; /* 30% pour trois éléments par ligne, ajuster si nécessaire */
+        margin: 10px;
+        padding: 20px;
+      }
+
+      .card:hover {
+        transform: translateY(-10px); /* Animation quand on survole la card */
+      }
+
+      /* Style pour le contenu de la card */
+      .card-body {
+        padding: 20px;
+        /*text-align: center;*/
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: gold;
+      }
+
+      .card-text {
+        color: rgba(2, 2, 2, 0.286);
+        font-size: 1rem;
+        font-style: italic;
+      }
+
+      .btn {
+        margin-top: 10px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </head>
   <body>
-    <h1>Liste des cours</h1>
-    <ul>
-      {% for cours in cours %}
-      <li>
-        <h2>{{ cours.nom }}</h2>
-        <p>{{ cours.description }}</p>
-        <p>Date de création : {{ cours.date_creation }}</p>
-      </li>
-      {% endfor %}
-    </ul>
+    <nav class="navbar navbar-expand-lg position-fixed navbar-dark w-100">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="static\img\logo.png" alt="ENSEA" class="logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{#}">ACCUEIL</a>
+              <!-- Pour ajouter les lien class="nav-link" href="{% url 'accueil' %} -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> MES COURS </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#">OPTION</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">MON PROFIL</a></li>
+                <li><a class="dropdown-item" href="#">LOGOUT</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="containerb clearfix">
+      <div class="">
+        {% for cours in cours %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">{{ cours.titre }}</h5>
+              <!-- Titre du cours -->
+              <p class="card-text">{{ cours.description }}</p>
+              <!-- Description du cours -->
+
+              <h6>Professeur :</h6>
+              <ul></ul>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p>Aucun cours disponible pour le moment.</p>
+        {% endfor %}
+      </div>
+    </div>
   </body>
 </html>
