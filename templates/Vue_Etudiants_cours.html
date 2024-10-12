@@ -181,6 +181,7 @@
         justify-content: space-between;
         align-items: flex-start;
         margin-top: 20px;
+        animation: fadeIn 1s ease-in-out forwards;
       }
 
       /* Style pour chaque card */
@@ -220,6 +221,20 @@
         font-size: 1rem;
         font-style: italic;
       }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(
+            -30px
+          ); /* Le texte commence légèrement décalé vers le haut */
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(
+            0
+          ); /* Le texte retrouve sa position d'origine */
+        }
+      }
 
       .btn {
         margin-top: 10px;
@@ -257,7 +272,7 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="{#}">ACCUEIL</a>
+              <a class="nav-link" href="{%url 'accueil'%}">ACCUEIL</a>
               <!-- Pour ajouter les lien class="nav-link" href="{% url 'accueil' %} -->
             </li>
             <li class="nav-item">

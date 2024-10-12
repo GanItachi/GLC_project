@@ -253,7 +253,7 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="{#}">ACCUEIL</a>
+              <a class="nav-link" href="{%url 'accueil'%}">ACCUEIL</a>
               <!-- Pour ajouter les lien class="nav-link" href="{% url 'accueil' %} -->
             </li>
             <li class="nav-item">
@@ -263,7 +263,13 @@
             <li class="nav-item dropdown">
               <a class="nav-link" href="#">OPTIONS</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">MON PROFIL</a></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'profil_etudiant' etudiant_id=1%}"
+                    >MON PROFIL</a
+                  >
+                </li>
                 <li><a class="dropdown-item" href="#">LOGOUT</a></li>
               </ul>
             </li>
@@ -274,7 +280,10 @@
 
     <section class="main">
       <div class="container">
-        <h1>Bienvenue sur votre espace personnel</h1>
+        <h1>
+          Bienvenue sur votre espace personnel {{ etudiant.nom }}
+          {{etudiant.prenom }} !
+        </h1>
       </div>
     </section>
   </body>

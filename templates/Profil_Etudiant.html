@@ -1,0 +1,63 @@
+<!-- profil_etudiant.html -->
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <title>Profil de {{ etudiant.prenom }} {{ etudiant.nom }}</title>
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      .profil-details {
+        margin-left: 20px;
+      }
+      .photo-etudiant {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+      }
+      .profil-details h2 {
+        margin-bottom: 15px;
+      }
+      .profil-details p {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Affiche la photo de l'étudiant -->
+      <div class="photo">
+        {% if etudiant.photo %}
+        <img
+          src="{{ etudiant.photo.url }}"
+          alt="Photo de {{ etudiant.prenom }}"
+          class="photo-etudiant"
+        />
+        {% else %}
+        <img
+          src="{% static 'default.png' %}"
+          alt="Photo non disponible"
+          class="photo-etudiant"
+        />
+        {% endif %}
+      </div>
+
+      <!-- Affiche les détails de l'étudiant -->
+      <div class="profil-details">
+        <h2>{{ etudiant.prenom }} {{ etudiant.nom }}</h2>
+        <p><strong>Email :</strong> {{ etudiant.email }}</p>
+        <p>
+          <strong>Date de naissance :</strong> {{ etudiant.date_naissance }}
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
