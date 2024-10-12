@@ -32,7 +32,7 @@
     {% load static %}
     <link rel="stylesheet" href="GLC_Project/static/img/" />
 
-    <title>ETUDIANT</title>
+    <title>Cours</title>
 
     <style>
       * {
@@ -86,17 +86,21 @@
         height: 50; /* Garde les proportions du logo */
         margin-bottom: 0spx; /* Espace entre le logo et le texte */
       }
-      .main {
-        background: url("./static/img/cour.jpg") no-repeat; /* Empêche la répétition de l'image */
-        background-size: cover; /* L'image couvre toute la zone, tout en conservant ses proportions */
-        background-position: center; /* Centre l'image dans l'élément */
-        height: 100vh; /* L'élément prend toute la hauteur de la fenêtre */
-        width: 100%; /* L'élément prend toute la largeur disponible */
-        display: flex; /* Utilisation de flexbox pour centrer le contenu */
-        align-items: center; /* Centre le texte verticalement */
-        justify-content: center; /* Centre le texte horizontalement */
-        position: relative;
-        overflow: hidden; /* Évite tout débordement si l'image est plus grande */
+
+      .main::before {
+        content: "";
+        /*position: absolute;*/
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+          16,
+          42,
+          51,
+          0.278
+        ); /* Couche semi-transparente par-dessus l'image */
+        z-index: 0; /* S'assure que l'overlay reste derrière le texte */
       }
 
       /* Permet l'affichage du sous-menu au passage du curseur */
@@ -142,7 +146,7 @@
       }
 
       h1 {
-        font-size: 6em; /* Taille encore plus grande pour le titre */
+        font-size: 3em; /* Taille encore plus grande pour le titre */
         margin: 0; /* Supprime les marges par défaut autour du titre */
       }
 
@@ -257,7 +261,7 @@
               <!-- Pour ajouter les lien class="nav-link" href="{% url 'accueil' %} -->
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'LISTE'%}"> MES COURS </a>
+              <a class="nav-link" href="#"> MES COURS </a>
             </li>
 
             <li class="nav-item dropdown">
@@ -272,10 +276,26 @@
       </div>
     </nav>
 
-    <section class="main">
-      <div class="container">
-        <h1>Bienvenue sur votre espace personnel</h1>
+    <div class="containerb clearfix">
+      <div class="">
+        {% for cours in cours %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">{{ cours.titre }}</h5>
+              <!-- Titre du cours -->
+              <p class="card-text">{{ cours.description }}</p>
+              <!-- Description du cours -->
+
+              <h6>Professeur :</h6>
+              <ul></ul>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p>Aucun cours disponible pour le moment.</p>
+        {% endfor %}
       </div>
-    </section>
+    </div>
   </body>
 </html>
