@@ -177,19 +177,9 @@
         position: absolute; /* Le texte est placé par-dessus l'image */
         z-index: 1; /* Assure que le texte est visible au-dessus de l'image */
         font-size: 2em; /* Ajuste la taille de la police */
-        background-color: rgba(
-          1,
-          183,
-          244,
-          0.434
-        ); /* Optionnel : Ajouter un fond semi-transparent au texte pour une meilleure lisibilité */
+        background-color: rgba(5, 101, 133, 0.434); /* Optionnel : Ajouter un fond semi-transparent au texte pour une meilleure lisibilité */
         padding: 20px; /* Ajouter un peu d'espace autour du texte */
         border-radius: 10px; /* Rendre les coins du fond arrondis */
-      }
-
-      .fixed_bottom {
-        background-color: rgba(22, 186, 243, 1);
-        box-shadow: 10px 10px 10px gold;
       }
 
       .ensea {
@@ -256,18 +246,22 @@
           class="logo"
         />
         <h1>Bienvenue sur DOODLE</h1>
-        <p>Votre plateforme d'apprentissage en ligne</p>
+        <p>Votre plateforme de cours en ligne</p>
       </div>
     </div>
 
     <section class="main">
       <div class="container">
         <div class="row">
-          <footer class="fixed_bottom">
+          <footer
+            class="fixed-bottom"
+            style="
+              background-color: rgba(22, 186, 243, 1);
+              box-shadow: 10px 10px 10px gold;"">
             <div class="container py-3">
               <div class="row">
                 <div class="col">
-                  <p class="ensea">L'ENSEA, plus qu'une école un esprit</p>
+                  <p class="ensea">ENSEA, plus qu'une école un esprit</p>
                 </div>
               </div>
             </div>
