@@ -37,6 +37,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',  # Utilise 'danger' pour correspondre à la classe Bootstrap
+}
+
 
 # Application definition
 
@@ -50,6 +60,7 @@ INSTALLED_APPS = [
     'Acceuil',
     'Etudiants',
     'Cours',
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +100,7 @@ WSGI_APPLICATION = 'GLC_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'AS3_Elearning',
+        'NAME':  'Elearing',
         'USER' : 'Ganame',
         'PASSWORD' : 'abdougana2003',
         'HOST' : 'localhost',

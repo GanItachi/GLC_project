@@ -1,8 +1,13 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('<int:etudiant_id>',views.b_etudiant,name='EtudiantA'),
+    path('',views.b_etudiant,name='EtudiantA'),
     path('Cours',views.liste_cours,name='LISTE'),
-    path('etudiant/<int:etudiant_id>/', views.profil_etudiant, name='profil_etudiant')
-]
+    path('profil', views.profil_etudiant, name='profil_etudiant'),
+    path('register', views.register, name='register'),
+    path('success/', views.success, name='success'),
+]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+

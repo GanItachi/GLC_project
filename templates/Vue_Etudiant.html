@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,17 @@
         padding: 0;
         margin: -100;
         box-sizing: border-box;
+      }
+      .profile {
+        display: flex;
+        align-items: center;
+      }
+
+      .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
       }
 
       .clearfix::after {
@@ -261,12 +272,17 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link" href="#">OPTIONS</a>
+              <div class="profile">
+                <img
+                  src="{{ etudiant.photo.url }}"
+                  alt="Photo de profil"
+                  class="profile-pic"
+                />
+                <span>{{ etudiant.prenom }} {{ etudiant.nom }}</span>
+              </div>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a
-                    class="dropdown-item"
-                    href="{% url 'profil_etudiant' etudiant_id=1%}"
+                  <a class="dropdown-item" href="{% url 'profil_etudiant'%}"
                     >MON PROFIL</a
                   >
                 </li>

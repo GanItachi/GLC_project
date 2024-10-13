@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-size: cover;
+        position: relative;
+        background-color: #f0f8ff;
+      }
+      /* CSS pour le conteneur principal */
+      .form-container {
+        display: flex; /* Crée une disposition en ligne pour l'image et le formulaire */
+        width: 70%; /* Largeur globale de l'ensemble */
+        margin: 0 auto; /* Centrage horizontal */
+        background-color: #f7f7f7; /* Couleur de fond du rectangle */
+        border: 1px solid #ccc; /* Bordure du rectangle */
+        border-radius: 10px; /* Coins arrondis */
+        padding: 20px;
+        box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2); /* Légère ombre pour un effet de profondeur */
+        margin-top: 120px;
+        position: relative; /* Pour positionner le logo à l'intérieur du conteneur */
+      }
+
+      /* CSS pour l'image */
+      .form-container img {
+        width: 57%; /* Largeur de l'image (40% du conteneur) */
+        border-radius: 10px;
+        margin-right: 20px; /* Espace entre l'image et le formulaire */
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      /* CSS pour le formulaire */
+      .form-container .form-fields {
+        width: 43%; /* Largeur du formulaire (60% du conteneur) */
+      }
+
+      .form-fields label,
+      .form-fields input {
+        display: block;
+        width: 90%;
+        margin-bottom: 20px;
+      }
+
+      .form-fields input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .form-fields button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .form-fields button:hover {
+        background-color: #45a049;
+      }
+
+      /* Positionnement du logo dans le coin inférieur droit */
+      .form-container .logo {
+        position: absolute;
+        bottom: 1px; /* Distance du bas du cadre */
+        right: 1px; /* Distance du côté droit du cadre */
+        width: 100px; /* Taille du logo */
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <!-- Section pour l'image à gauche -->
+      <img src="../static/img/devanture.jpeg" alt="" />
+      <!-- Section pour le formulaire à droite -->
+      <div class="form-fields">
+        <h1>CONNEXION</h1>
+
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li>{{message}}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form method="post">
+          {% csrf_token %} {{ form.as_p }}
+          <!-- Utilisation du formulaire Django -->
+          <button type="submit" href="{% url 'Acc'%}">Se connecter</button>
+        </form>
+        <p class="link">
+          Pas encore inscrit ?
+          <a href="http://127.0.0.1:8000/register/">S'inscrire</a>
+        </p>
+      </div>
+      <!-- Logo positionné dans le coin inférieur droit -->
+      <img src="/static/img/DoodleL.png" alt="Logo" class="logo" />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <title>Register</title>
+    <style>
+      /* CSS pour le conteneur principal */
+      .form-container {
+        display: flex; /* Crée une disposition en ligne pour l'image et le formulaire */
+        width: 40%; /* Largeur globale de l'ensemble */
+        margin: 0 auto; /* Centrage horizontal */
+        background-color: #f7f7f7; /* Couleur de fond du rectangle */
+        border: 1px solid #ccc; /* Bordure du rectangle */
+        border-radius: 10px; /* Coins arrondis */
+        padding: 20px;
+        box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2); /* Légère ombre pour un effet de profondeur */
+      }
+
+      /* CSS pour l'image */
+      .form-container img {
+        width: 57%; /* Largeur de l'image (40% du conteneur) */
+        border-radius: 10px;
+        margin-right: 20px; /* Espace entre l'image et le formulaire */
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      /* CSS pour le formulaire */
+      .form-container .form-fields {
+        width: 55%; /* Largeur du formulaire (60% du conteneur) */
+      }
+
+      .form-fields label,
+      .form-fields input {
+        display: block;
+        width: 90%;
+        margin-bottom: 20px;
+      }
+
+      .form-fields input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .form-fields button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .form-fields button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <!-- Section pour l'image à gauche -->
+      <img src="/static/img/succes.jpg" alt="" />
+      <!-- Section pour le formulaire à droite -->
+      <div class="form-fields">
+        <h2>Les informations ont été enregistrées avec succès !</h2>
+        <p>Cliquez sur "OK" pour vous connecter.</p>
+
+        <!-- Bouton OK redirigeant vers une autre page -->
+        <form method="post" action="{% url 'accueil'%}">
+          {% csrf_token %}
+          <button type="submit" ">OK</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
