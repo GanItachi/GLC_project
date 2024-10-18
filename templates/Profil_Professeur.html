@@ -1,0 +1,63 @@
+<!-- profil_Professeur.html -->
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <title>Profil de {{ Professeur.prenom }} {{ Professeur.nom }}</title>
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      .profil-details {
+        margin-left: 20px;
+      }
+      .photo-Professeur {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+      }
+      .profil-details h2 {
+        margin-bottom: 15px;
+      }
+      .profil-details p {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Affiche la photo de l'étudiant -->
+      <div class="photo">
+        {% if Professeur.photo %}
+        <img
+          src="{{ Professeur.photo.url }}"
+          alt="Photo de {{ Professeur.prenom }}"
+          class="photo-Professeur"
+        />
+        {% else %}
+        <img
+          src="{% static 'default.png' %}"
+          alt="Photo non disponible"
+          class="photo-Professeur"
+        />
+        {% endif %}
+      </div>
+
+      <!-- Affiche les détails de l'étudiant -->
+      <div class="profil-details">
+        <h2>{{ Professeur.prenom }} {{ Professeur.nom }}</h2>
+        <p><strong>Email :</strong> {{ Professeur.email }}</p>
+        <p>
+          <strong>Date de naissance :</strong> {{ Professeur.date_naissance }}
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

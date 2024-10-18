@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     'Etudiants',
     'Cours',
     'login',
+    'loginP',
+    'Professeur',
 ]
 
 MIDDLEWARE = [
@@ -100,7 +102,7 @@ WSGI_APPLICATION = 'GLC_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'Elearing',
+        'NAME':  'as_elearning',
         'USER' : 'Ganame',
         'PASSWORD' : 'abdougana2003',
         'HOST' : 'localhost',
@@ -146,6 +148,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT= '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

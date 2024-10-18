@@ -7,6 +7,8 @@ from .models import Etudiants
 from django import forms
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, get_object_or_404
+from Cours.models import Ressource
+from Cours.forms import RessourceForm
 
 
 def Etudiant(request):
@@ -60,3 +62,33 @@ def success(request):
 def home(request) :
     return render (request, 'Acceuil.html')
 
+
+def detail_coursE(request, id):
+    email = request.session.get('etudiant_email')
+    etudiant = Etudiants.objects.get(email=email)
+    cours = get_object_or_404(Cours, id= id)
+    ressources = Ressource.objects.filter(cours=cours)  # Récupère les ressources liées à ce cours
+    
+    # Formulaire pour ajouter des ressources
+    if request.method == 'POST':
+        form = RessourceForm(request.POST, request.FILES)
+        if form.is_valid():
+            ressource = form.save(commit=False)
+            ressource.cours = cours  # Associe la ressource au cours
+            ressource.save()
+            return redirect('detailsE', id=cours.id)
+    else:
+        form = RessourceForm()
+
+    return render(request, 'detail_cours_etudiant.html', {
+        'cours': cours,
+        'ressources': ressources,
+        'form': form,
+        'etudiant': etudiant, 
+    })
+    
+def logout(request):
+    request.session.flush()  # Supprime toutes les données de la session
+    return redirect('accueil')
+
+    
