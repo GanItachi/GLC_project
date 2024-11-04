@@ -41,7 +41,7 @@ class EtudiantForm(ModelForm):
 
     class Meta:
         model = Etudiants
-        fields = ['nom','prenom','email','password', 'photo']
+        fields = ['nom','prenom','nationalite','email','password', 'photo']
 
 def register(request):
     if request.method == 'POST':

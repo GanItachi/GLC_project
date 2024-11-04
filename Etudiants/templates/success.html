@@ -6,16 +6,54 @@
     {% load static %}
     <title>Register</title>
     <style>
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(10px); /* Partir de plus bas */
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0); /* Remonter à sa position normale */
+        }
+      }
+
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url("/static/img/cour.jpg") no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Overlay pour assombrir l'image */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 150%;
+        z-index: -2;
+        background-color: rgba(0, 0, 0, 0.341); /* Couche noire avec 50% d'opacité */
+      }
+
       /* CSS pour le conteneur principal */
       .form-container {
         display: flex; /* Crée une disposition en ligne pour l'image et le formulaire */
-        width: 40%; /* Largeur globale de l'ensemble */
+        width: 60%; /* Largeur globale de l'ensemble */
         margin: 0 auto; /* Centrage horizontal */
-        background-color: #f7f7f7; /* Couleur de fond du rectangle */
+        background-color: #f7f7f796; /* Couleur de fond du rectangle */
         border: 1px solid #ccc; /* Bordure du rectangle */
         border-radius: 10px; /* Coins arrondis */
         padding: 20px;
+        margin-top: 60px;
         box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2); /* Légère ombre pour un effet de profondeur */
+        z-index: 10; /* Position au-dessus de l'overlay */
+        animation: fadeInUp 1s ease-in-out;
       }
 
       /* CSS pour l'image */
