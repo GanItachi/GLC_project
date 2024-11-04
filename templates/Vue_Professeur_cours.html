@@ -328,7 +328,10 @@
               <p class="card-text">{{ cours.description }}</p>
               <!-- Description du cours -->
 
-              <h6>Professeur :</h6>
+              <h6>
+                Professeur : {{ cours.professeur.nom }}
+                {{cours.professeur.prenom }}
+              </h6>
               <ul></ul>
             </div>
           </div>

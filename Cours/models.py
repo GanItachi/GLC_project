@@ -5,6 +5,7 @@ from django.core.files import File
 from django.conf import settings
 import os
 from Professeur.models import Professeurs
+from django.core.exceptions import ValidationError
 
 # Modèle pour les professeurs
 
@@ -21,9 +22,18 @@ class Cours(models.Model):
     illustration = models.ImageField(upload_to='cours_illustrations/', blank=True, null=True)  # Ajouter une image pour le cours  # Champ pour les fichiers
 
 
-
+    def clean(self):
+        # Vérifie que la date de fin est postérieure à la date de début
+        if self.date_fin and self.date_debut and self.date_fin <= self.date_debut:
+            raise ValidationError("La date de fin doit être postérieure à la date de début.")
+    
     def __str__(self):
         return self.titre
+    
+    def save(self, *args, **kwargs):
+        # Appelle la validation avant de sauvegarder
+        self.full_clean()
+        super().save(*args, **kwargs)
 
 # Modèle pour les ressources
 class Ressource(models.Model):
