@@ -29,6 +29,7 @@
       integrity="sha384-PJsj/BTMqILvmcej7ulplguok8ag4xFTPryRq8xevL7eBYSmpXKcbNVuy+P0RMgq"
       crossorigin="anonymous"
     />
+    {% load static %}
     <link rel="stylesheet" href="/GLC_Project/static/img/" />
     <title>ACCUEIL</title>
 
@@ -193,7 +194,7 @@
     <nav class="navbar navbar-expand-lg position-fixed navbar-dark w-100">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="static\img\logo.png" alt="ENSEA" />
+          <img src="{% static 'img/logo.png' %}" alt="ENSEA" class="logo"  />
         </a>
         <button
           class="navbar-toggler"

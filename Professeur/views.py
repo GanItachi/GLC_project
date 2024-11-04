@@ -19,7 +19,7 @@ def cours_professeur(request):
     idP = request.session.get('Professeur_id')
     professeur = Professeurs.objects.get(id= idP)
     cours = Cours.objects.filter(professeur=professeur) # Récupère les cours attribués au professeur
-    return render(request, 'Vue_professeur_cours.html', {'cours': cours})
+    return render(request, 'Vue_professeur_cours.html', {'cours': cours, 'Professeur': professeur })
 
 def detail_cours(request, id):
     email = request.session.get('Professeur_email')

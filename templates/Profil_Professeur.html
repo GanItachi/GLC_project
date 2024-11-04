@@ -7,6 +7,31 @@
     {% load static %}
     <title>Profil de {{ Professeur.prenom }} {{ Professeur.nom }}</title>
     <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .ensea {
+        font-size: 30px;
+        color: white;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .full-width-container {
+        width: 100%; /* Prend 100% de la largeur disponible */
+        margin-top: 200; /* Évite les marges indésirables */
+        padding: 0; /* Évite les paddings indésirables */
+        box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+        height: -100vh
+      }
+
       .container {
         display: flex;
         align-items: center;
@@ -29,9 +54,37 @@
         font-size: 18px;
         margin-bottom: 10px;
       }
+
+      .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%; /* Prend 100% de la largeur de l'écran */
+        background-color: rgba(22, 186, 243, 1); /* Assure que le fond est bien rempli */
+        box-shadow: 10px 10px 10px gold;
+        text-align: center; /* Centre le texte horizontalement */
+      }
+    
     </style>
   </head>
   <body>
+    <style>
+      .main {
+        background: url("./static/img/cour.jpg") no-repeat; /* Empêche la répétition de l'image */
+        background-size: cover; /* L'image couvre toute la zone, tout en conservant ses proportions */
+        background-position: center; /* Centre l'image dans l'élément */
+        height: 100vh; /* L'élément prend toute la hauteur de la fenêtre */
+        width: 100%; /* L'élément prend toute la largeur disponible */
+        display: flex; /* Utilisation de flexbox pour centrer le contenu */
+        align-items: center; /* Centre le texte verticalement */
+        justify-content: center; /* Centre le texte horizontalement */
+        position: relative;
+        overflow: hidden; /* Évite tout débordement si l'image est plus grande */
+      }
+
+    </style>
+
+
     <div class="container">
       <!-- Affiche la photo de l'étudiant -->
       <div class="photo">
@@ -54,10 +107,31 @@
       <div class="profil-details">
         <h2>{{ Professeur.prenom }} {{ Professeur.nom }}</h2>
         <p><strong>Email :</strong> {{ Professeur.email }}</p>
-        <p>
-          <strong>Date de naissance :</strong> {{ Professeur.date_naissance }}
-        </p>
+        <p><strong>Date d'embauche :</strong> {{ Professeur.date_embauche }}</p>
+        <p><strong>Telephone : </strong>{{Professeur.telephone}}</p>
       </div>
     </div>
+
+
+    <section class="main">
+      <div class="full-width-container">
+        <div class="row">
+          <footer
+            class="fixed-bottom"
+            style="
+              background-color: rgba(22, 186, 243, 1);
+              box-shadow: 10px 10px 10px gold;"">
+            <div class="container py-3">
+              <div class="row">
+                <div class="col">
+                  <p class="ensea">ENSEA, plus qu'une école un esprit</p>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </section>
+
   </body>
 </html>
